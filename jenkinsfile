@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage ('Build Docker Image') {
+            steps {
+                scrip {
+                    docker = docker.build("matheuspresotto/kubec-news:${env.BUILD_ID}", '-f ./src/Dockerfile ./src')
+                }
+            }
+        }
+
+    }
+
+}
